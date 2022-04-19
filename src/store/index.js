@@ -3,9 +3,15 @@ import {createStore} from 'vuex'
 export default createStore({
     state: {
         tagsList: [],
-        collapse: false
+        collapse: false,
+        platofrm: "1"
     },
     mutations: {
+
+        changePlatform(state, data) {
+            state.platofrm = data
+        },
+
         delTagsItem(state, data) {
             state
                 .tagsList

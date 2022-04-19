@@ -17,6 +17,22 @@ const routes = [
                     title: '系统首页'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+            },
+            {
+                path: "/config",
+                name: "config",
+                meta: {
+                    title: '配置'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/ConfigPage.vue")
+            },
+            {
+                path: "/coverage",
+                name: "coverage",
+                meta: {
+                    title: '覆盖率'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/CoveragePage.vue")
             }
         ]
     }, {
