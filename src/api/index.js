@@ -7,3 +7,19 @@ export const fetchData = query => {
         params: query
     });
 };
+
+export const graphData1 = query => {
+    return request({
+        url: './graphData1.json',
+        method: 'get',
+        params: query
+    });
+};
+
+export const graphData2 = query => {
+    return request({
+        url: query,
+        method: 'get',
+        params: ''
+    });
+};

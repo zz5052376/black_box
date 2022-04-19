@@ -42,6 +42,21 @@ export default {
                 icon: "el-icon-lx-home",
                 index: "/dashboard",
                 title: "系统首页",
+            },
+            {
+                icon: "el-icon-lx-cascades",
+                index: "/visgraph1",
+                title: "cfg图1",
+            },
+            {
+                icon: "el-icon-lx-copy",
+                index: "/visgraph2",
+                title: "cfg图2",
+            },
+            {
+                icon: "el-icon-lx-cascades",
+                index: "/table",
+                title: "基础表格",
             }
         ];
 

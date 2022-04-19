@@ -17,6 +17,34 @@ const routes = [
                     title: '系统首页'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+            },{
+                path: "/visgraph1",
+                name: "visgraph1",
+                meta: {
+                    title: 'cfg图1'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/Vis3.vue")
+            },{
+                path: "/visgraph2",
+                name: "visgraph2",
+                meta: {
+                    title: 'cfg图2'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/Vis4.vue")
+            }, {
+                path: "/tabs",
+                name: "tabs",
+                meta: {
+                    title: 'tab标签'
+                },
+                component: () => import ( /* webpackChunkName: "tabs" */ "../views/Tabs.vue")
+            }, {
+                path: "/table",
+                name: "basetable",
+                meta: {
+                    title: '表格'
+                },
+                component: () => import ( /* webpackChunkName: "table" */ "../views/BaseTable.vue")
             }
         ]
     }, {

@@ -1,0 +1,16 @@
+{
+    "nodes": [
+      { "id": 1, "shape": "circle", "value": 1 , "color": { "background": "black" }},
+      { "id": 2, "label": "B3\nXXXXXXX\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx","widthConstraint": { "maximum": 100 }, "shape": "box", "value": 5 },
+      { "id": 3, "label": "B2\nXXXX\nxxxxxxxxxxx","widthConstraint": { "maximum": 80 }, "shape": "box", "value": 3 },
+      { "id": 4, "label": "B1", "shape": "box", "value": 3 },
+      { "id": 5, "shape": "circle", "value": 1 , "color": { "background": "black" }}
+    ],
+    "edges": [
+      { "from": 1, "to": 2 },
+      { "from": 2, "to": 3, "color": { "color": "green" }},
+      { "from": 2, "to": 4, "color": { "color": "yellow" } },
+      { "from": 3, "to": 5 ,"color": { "color": "red" }},
+      { "from": 4, "to": 5 }
+    ]
+  }
