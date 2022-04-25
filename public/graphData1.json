@@ -12,5 +12,44 @@
       { "from": 2, "to": 4, "color": { "color": "yellow" } },
       { "from": 3, "to": 5 ,"color": { "color": "red" }},
       { "from": 4, "to": 5 }
-    ]
+    ],"option":{
+      "nodes": {
+        "color": {
+          "background": "#ffffff"
+        },
+        "shape": "dot",
+        "scaling": {
+          "label": {
+            "min": 8,
+            "max": 20
+          }
+        }
+      },
+      "edges": {
+        "arrows": {
+          "to": {
+            "enabled": true,
+            "scaleFactor": 1,
+            "type": "arrow"
+          }
+        }
+      },
+      "layout": {
+        "randomSeed": "undefined",
+        "improvedLayout": true,
+        "clusterThreshold": 150,
+        "hierarchical": {
+          "enabled": true,
+          "levelSeparation": 150,
+          "nodeSpacing": 100,
+          "treeSpacing": 200,
+          "blockShifting": true,
+          "edgeMinimization": true,
+          "parentCentralization": true,
+          "direction": "LR",
+          "sortMethod": "directed",
+          "shakeTowards": "roots"
+        }
+      }
+    }
   }

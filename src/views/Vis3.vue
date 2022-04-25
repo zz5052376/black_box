@@ -2,6 +2,7 @@
   <div id="mynetwork"></div>
   <button @click="getData(1)">获取数据1</button>
   <button @click="getData(2)">获取数据2</button>
+  <button @click="getData(3)">获取数据3</button>
 </template>
 
 <script>
@@ -22,6 +23,8 @@ export default {
         // console.log(res.nodes);
         // console.log(res.edges);
         var testData = { nodes: res.nodes, edges: res.edges };
+        var option1=res.option;
+        console.log(option1);
         var option={
           nodes: {
             color: {
@@ -62,7 +65,7 @@ export default {
             },
           },
         };
-        new vis.Network(document.getElementById("mynetwork"), testData, option);
+        new vis.Network(document.getElementById("mynetwork"), testData, option1);
       });
     },
   },
@@ -72,7 +75,7 @@ export default {
     <style type="text/css">
 #mynetwork {
   width: 600px;
-  height: 400px;
+  height: 600px;
   border: 1px solid lightgray;
 }
 </style>

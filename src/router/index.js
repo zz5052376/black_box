@@ -45,6 +45,13 @@ const routes = [
                     title: '表格'
                 },
                 component: () => import ( /* webpackChunkName: "table" */ "../views/BaseTable.vue")
+            }, {
+                path: "/dyComponent",
+                name: "dyComponent",
+                meta: {
+                    title: '表格'
+                },
+                component: () => import ( /* webpackChunkName: "table" */ "../views/DyComponent.vue")
             }
         ]
     }, {
