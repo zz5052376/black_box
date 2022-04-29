@@ -1,11 +1,11 @@
 {
     "nodes": [
       { "id": 1, "shape": "circle", "value": 1 , "color": { "background": "black" }},
-      { "id": 2, "label": "B5\nXXXX\nxxxxxxxxxxx","widthConstraint": { "maximum": 80 }, "shape": "box", "value": 3 },
-      { "id": 3, "label": "B4\nXXXXXXX\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx","widthConstraint": { "maximum": 100 }, "shape": "box", "value": 5 },
-      { "id": 4, "label": "B3\nXXXX\nxxxxxxxxxxx","widthConstraint": { "maximum": 80 }, "shape": "box", "value": 3 },
-      { "id": 5, "label": "B2", "shape": "box", "value": 3 },
-      { "id": 6, "label": "B1", "shape": "box", "value": 3 },
+      { "id": 2, "label": "B2\nXXXX\nxxxxxxxxxxx","widthConstraint": { "maximum": 80 }, "shape": "box", "value": 3 },
+      { "id": 3, "label": "B3\nXXXXXXX\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx","widthConstraint": { "maximum": 100 }, "shape": "box", "value": 5 },
+      { "id": 4, "label": "B4\nXXXX\nxxxxxxxxxxx","widthConstraint": { "maximum": 80 }, "shape": "box", "value": 3 },
+      { "id": 5, "label": "B5", "shape": "box", "value": 3 },
+      { "id": 6, "label": "B6", "shape": "box", "value": 3 },
       { "id": 7, "shape": "circle", "value": 1 , "color": { "background": "black" }}
     ],
     "edges": [

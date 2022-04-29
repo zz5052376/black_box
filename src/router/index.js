@@ -52,6 +52,20 @@ const routes = [
                     title: '表格'
                 },
                 component: () => import ( /* webpackChunkName: "table" */ "../views/DyComponent.vue")
+            }, {
+                path: "/cfgPage",
+                name: "cfgPage",
+                meta: {
+                    title: '攻击路径'
+                },
+                component: () => import ( /* webpackChunkName: "table" */ "../views/CfgPage.vue")
+            }, {
+                path: "/dfgPage",
+                name: "dfgPage",
+                meta: {
+                    title: '污点传播路径'
+                },
+                component: () => import ( /* webpackChunkName: "table" */ "../views/DfgPage.vue")
             }
         ]
     }, {
