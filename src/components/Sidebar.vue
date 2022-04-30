@@ -56,13 +56,13 @@ import { computed, watch } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 export default {
-  setup() {
-    const items = [
-      {
-        icon: "el-icon-lx-home",
-        index: "/dashboard",
-        title: "系统首页",
-      },
+    setup() {
+        const items = [
+            {
+                icon: "el-icon-lx-home",
+                index: "/dashboard",
+                title: "系统首页",
+            },
       {
         icon: "el-icon-lx-cascades",
         index: "/config",
@@ -73,7 +73,17 @@ export default {
         index: "/coverage",
         title: "覆盖率",
       },
-    ];
+            {
+                icon: "el-icon-lx-cascades",
+                index: "/cfgPage",
+                title: "攻击路径",
+            },
+            {
+                icon: "el-icon-lx-cascades",
+                index: "/dfgPage",
+                title: "污点传播路径",
+            }
+        ];
 
     const route = useRoute();
 
