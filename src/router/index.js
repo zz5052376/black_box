@@ -66,6 +66,22 @@ const routes = [
                     title: '污点传播路径'
                 },
                 component: () => import ( /* webpackChunkName: "table" */ "../views/DfgPage.vue")
+            },
+            {
+                path: "/config",
+                name: "config",
+                meta: {
+                    title: '配置'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/ConfigPage.vue")
+            },
+            {
+                path: "/coverage",
+                name: "coverage",
+                meta: {
+                    title: '覆盖率'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/CoveragePage.vue")
             }
         ]
     }, {
