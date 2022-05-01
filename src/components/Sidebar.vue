@@ -73,6 +73,16 @@ export default {
         index: "/coverage",
         title: "覆盖率",
       },
+      {
+        icon: "el-icon-lx-cascades",
+        index: "/network",
+        title: "整体网络图",
+      },
+      {
+        icon: "el-icon-lx-cascades",
+        index: "/keyasset",
+        title: "关键资产",
+      },
             {
                 icon: "el-icon-lx-cascades",
                 index: "/cfgPage",

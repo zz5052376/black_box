@@ -65,18 +65,18 @@
                 v-for="item in breadList"
                 @click="openDetails(item)"
               >
-                {{ item.name }}</el-breadcrumb-item
+                {{ item.covinfo.name }}</el-breadcrumb-item
               >
             </el-breadcrumb>
           </el-row>
 
           <el-table :data="tableData" @row-click="openDetails">
-            <el-table-column prop="name" label="数据名" width="700px">
+            <el-table-column prop="covinfo.name" label="数据名" width="700px">
             </el-table-column>
             <el-table-column prop="address" label="覆盖率">
               <template #default="scope">
                 <el-progress
-                  :percentage="(scope.row.x / scope.row.y) * 100"
+                  :percentage="scope.row.covinfo.branch_coverage"
                 ></el-progress>
               </template>
             </el-table-column>
@@ -105,14 +105,106 @@
 export default {
   data() {
     return {
+      deep: 0,
+      path: "",
       currentNum: -1,
       breadList: [
         {
-          name: "base",
-          id: -1,
+          covinfo: {
+            name: "base",
+          },
         },
       ],
       tableData: [],
+      oriDate2: [
+        {
+          covinfo: {
+            sum_function: 3728,
+            path: "/home/hvgr",
+            statement: "0.00",
+            branch_coverage: "100.00",
+            sum_branch: 19879,
+            cvg_branch: 0,
+            name: "hvgr",
+            function_coverage: "0.00",
+            cvg_statement: 0,
+            cvg_function: 0,
+            sum_statement: 52869,
+          },
+          folder: true,
+          subFiles: [
+            {
+              covinfo: {
+                sum_function: 3728,
+                path: "/home/hvgr/a",
+                statement: "0.00",
+                branch_coverage: "40.00",
+                sum_branch: 19879,
+                cvg_branch: 0,
+                name: "a",
+                function_coverage: "0.00",
+                cvg_statement: 0,
+                cvg_function: 0,
+                sum_statement: 52869,
+              },
+              folder: true,
+              subFiles: [
+                {
+                  covinfo: {
+                    sum_function: 3728,
+                    path: "/home/hvgr/a/d",
+                    statement: "0.00",
+                    branch_coverage: "40.00",
+                    sum_branch: 19879,
+                    cvg_branch: 0,
+                    name: "d",
+                    function_coverage: "0.00",
+                    cvg_statement: 0,
+                    cvg_function: 0,
+                    sum_statement: 52869,
+                  },
+                  folder: true,
+                  subFiles: [],
+                },
+              ],
+            },
+            {
+              covinfo: {
+                sum_function: 3728,
+                path: "/home/hvgr/b",
+                statement: "0.00",
+                branch_coverage: "30.00",
+                sum_branch: 19879,
+                cvg_branch: 0,
+                name: "b",
+                function_coverage: "0.00",
+                cvg_statement: 0,
+                cvg_function: 0,
+                sum_statement: 52869,
+              },
+              folder: true,
+              subFiles: [],
+            },
+            {
+              covinfo: {
+                sum_function: 3728,
+                path: "/home/hvgr/c",
+                statement: "0.00",
+                branch_coverage: "30.00",
+                sum_branch: 19879,
+                cvg_branch: 0,
+                name: "c",
+                function_coverage: "0.00",
+                cvg_statement: 0,
+                cvg_function: 0,
+                sum_statement: 52869,
+              },
+              folder: true,
+              subFiles: [],
+            },
+          ],
+        },
+      ],
       oriDate: [
         {
           id: 0,
@@ -163,7 +255,7 @@ export default {
   methods: {
     isInArray(arr, value) {
       for (var i = 0; i < arr.length; i++) {
-        if (value.id === arr[i].id) {
+        if (value.covinfo.name === arr[i].covinfo.name) {
           return i;
         }
       }
@@ -171,11 +263,22 @@ export default {
     },
 
     openDetails(row) {
-      this.currentNum = row.id;
+      if (row.covinfo.name == "base") {
+        this.breadList = [
+          {
+            covinfo: {
+              name: "base",
+            },
+          },
+        ];
+
+        this.updateTable(this.oriDate2);
+        return;
+      }
 
       let num = this.isInArray(this.breadList, row);
       if (num == -1) {
-        this.breadList.push({ name: row.name, id: row.id });
+        this.breadList.push(row);
       } else {
         let li = [];
 
@@ -187,21 +290,19 @@ export default {
         this.breadList = li;
       }
 
-      this.updateTable();
+      this.updateTable(row.subFiles);
     },
 
-    updateTable() {
+    updateTable(tableList) {
       this.tableData = [];
-      this.oriDate.forEach((v, i) => {
-        if (v.parentId == this.currentNum) {
-          this.tableData.push(v);
-        }
+      tableList.forEach((v, i) => {
+        this.tableData.push(v);
       }, this);
     },
   },
 
   mounted() {
-    this.updateTable();
+    this.updateTable(this.oriDate2);
   },
 };
 </script>

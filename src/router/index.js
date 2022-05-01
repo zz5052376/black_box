@@ -82,6 +82,22 @@ const routes = [
                     title: '覆盖率'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/CoveragePage.vue")
+            },
+            {
+                path: "/network",
+                name: "network",
+                meta: {
+                    title: '整体网络图'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/NetworkPage.vue")
+            },
+            {
+                path: "/keyasset",
+                name: "keyasset",
+                meta: {
+                    title: '关键资产'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/KeyAsset.vue")
             }
         ]
     }, {

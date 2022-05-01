@@ -22,7 +22,7 @@
 
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index.row)">编辑
+                        <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑
                         </el-button>
                         <el-button type="text" icon="el-icon-delete" class="red"
                             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
@@ -146,13 +146,15 @@ export default {
         const editVisible = ref(false);
         const addVisible = ref(false);
         let form = reactive({
-            name: "",
-            address: "",
+            data: "",
+            author: "",
+            algorithm: "",
         });
         let idx = -1;
         const handleEdit = (index, row) => {
             idx = index;
             Object.keys(form).forEach((item) => {
+                console.log(row[item])
                 form[item] = row[item];
             });
             editVisible.value = true;
