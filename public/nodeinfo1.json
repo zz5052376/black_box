@@ -1,0 +1,38 @@
+{
+	"nodes": {
+		"66123": {
+			"isAsset": 0,
+			"szFun": "mcl_entrypoints_convert_import_properties_type@cl_int (cl_import_properties_arm, mcl_memory_import_type_properties &)",
+			"kind": 1,
+			"lineBegin": 173,
+			"moduleName": "libGFX_hisi_v120_M0407152025",
+			"name": "B2",
+			"szLabelSize": "B2",
+			"blkId": 2,
+			"id": 66123,
+			"lineEnd": 173,
+			"labels": "BLK"
+		},
+		"66124": {
+			"isAsset": 0,
+			"szFun": "mcl_entrypoints_convert_import_properties_type@cl_int (cl_import_properties_arm, mcl_memory_import_type_properties &)",
+			"kind": 1,
+			"lineBegin": 183,
+			"moduleName": "libGFX_hisi_v120_M0407152025",
+			"name": "B3",
+			"szLabelSize": "B3",
+			"blkId": 3,
+			"id": 66124,
+			"lineEnd": 183,
+			"labels": "BLK"
+		}
+	},
+	"relations": [
+		{
+			"startNode": 66123,
+			"endNode": 66124,
+			"type": "NEXT",
+			"covTime": 0
+		}
+	]
+}

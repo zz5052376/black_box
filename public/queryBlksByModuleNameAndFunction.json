@@ -1,0 +1,38 @@
+{
+	"nodes": {
+		"5": {
+			"isAsset": 0,
+			"szFun": "aaaa",
+			"kind": 1,
+			"lineBegin": 173,
+			"moduleName": "libGFX_hisi_v120_M0407152025",
+			"name": "B1",
+			"szLabelSize": "B2",
+			"blkId": 2,
+			"id": 5,
+			"lineEnd": 173,
+			"labels": "BLK"
+		},
+		"6": {
+			"isAsset": 0,
+			"szFun": "bbbb",
+			"kind": 1,
+			"lineBegin": 183,
+			"moduleName": "libGFX_hisi_v120_M0407152025",
+			"name": "B2",
+			"szLabelSize": "B3",
+			"blkId": 3,
+			"id": 6,
+			"lineEnd": 183,
+			"labels": "BLK"
+		}
+	},
+	"relations": [
+		{
+			"startNode": 5,
+			"endNode": 6,
+			"type": "NEXT",
+			"covTime": 0
+		}
+	]
+}

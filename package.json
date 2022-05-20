@@ -8,8 +8,15 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "3d-force-graph": "^1.70.10",
     "axios": "^0.21.1",
+    "echarts": "^5.3.2",
     "element-plus": "1.0.2-beta.52",
+    "three": "^0.140.2",
+    "three-css2drender": "^1.0.0",
+    "three-spritetext": "^1.6.5",
+    "three.js": "^0.77.1",
+    "vis-data": "^7.1.4",
     "vis-network": "^9.1.2",
     "vue": "^3.1.2",
     "vue-cropperjs": "^5.0.0",
@@ -20,6 +27,7 @@
     "wangeditor": "^4.7.4"
   },
   "devDependencies": {
+    "@types/three": "^0.140.0",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.1.2",
     "vite": "2.3.7"
