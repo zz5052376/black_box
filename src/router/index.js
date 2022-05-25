@@ -84,10 +84,18 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/CoveragePage.vue")
             },
             {
+                path: "/bulletin",
+                name: "bulletin",
+                meta: {
+                    title: '整体网络图'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/BulletinBoard.vue")
+            },
+            {
                 path: "/network",
                 name: "network",
                 meta: {
-                    title: '整体网络图'
+                    title: '看板'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/NetworkPage.vue")
             },

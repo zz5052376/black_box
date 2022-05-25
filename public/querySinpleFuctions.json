@@ -1,0 +1,44 @@
+[
+    {
+        "szOrg": "/home/z00264029/hione_2022_higpu/vendor/hisi/gpu/umd/hvgr/vulkan/src/mali_vulkan_physical_device.cpp",
+        "isAsset": 0,
+        "szFun": "222vkGetPhysicalDeviceImageFormatP333roperties@VkResult (VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties *)",
+        "szFile": "vendor/hisi/gpu/umd/hvgr/khronos/original/vulkan/vulkan_core.h",
+        "lineBegin": 187,
+        "moduleName": "libGFX_hisi_v120_M0407152025",
+        "name": "vkGetPhysicalDeviceImageFormatProperties@VkResult (VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties *)",
+        "id": 86657,
+        "isExposed": 0,
+        "lineEnd": 211,
+        "labels": "CFG"
+    },
+
+    {
+        "szOrg": "/home/z00264029/hione_2022_higpu/vendor/hisi/gpu/umd/hvgr/vulkan/src/mali_vulkan_physical_device.cpp",
+        "isAsset": 0,
+        "szFun": "vkGetPhysicalDeviceImageFormatProperties@VkResult (VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties *)",
+        "szFile": "vendor/hisi/gpu/umd/hvgr/khronos/original/vulkan/vulkan_core.h",
+        "lineBegin": 187,
+        "moduleName": "libGFX_hisi_v120_M0407152025",
+        "name": "vkGetPhysicalDeviceImageFormatProperties@VkResult (VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties *)",
+        "id": 86657,
+        "isExposed": 0,
+        "lineEnd": 211,
+        "labels": "CFG"
+    },
+
+    {
+        "szOrg": "/home/z00264029/hione_2022_higpu/vendor/hisi/gpu/umd/hvgr/vulkan/src/mali_vulkan_physical_device.cpp",
+        "isAsset": 0,
+        "szFun": "vkGetPhysicalDeviceImageFormatProperties@VkResult (VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties *)",
+        "szFile": "vendor/hisi/gpu/umd/hvgr/khronos/original/vulkan/vulkan_core.h",
+        "lineBegin": 187,
+        "moduleName": "libGFX_hisi_v120_M0407152025",
+        "name": "vkGetPhysicalDeviceImageFormatProperties@VkResult (VkPhysicalDevice, VkFormat, VkImageType, VkImageTiling, VkImageUsageFlags, VkImageCreateFlags, VkImageFormatProperties *)",
+        "id": 86657,
+        "isExposed": 0,
+        "lineEnd": 211,
+        "labels": "CFG"
+    }
+
+]
