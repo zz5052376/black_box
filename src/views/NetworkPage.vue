@@ -1,6 +1,12 @@
 <template>
   <el-container>
     <el-aside width="200px">
+      <el-switch
+        v-model="value1"
+        active-text="打开标签"
+        inactive-text="关闭标签"
+      >
+      </el-switch>
       <br />
       <br />
       <br />
@@ -14,19 +20,63 @@
         ></el-autocomplete>
       </div>
       <br />
-      <!-- <div>
-        <el-button type="primary" @click="search()">搜索</el-button>
-      </div> -->
+
+      <el-row class="nodeinfo">
+        <el-col :span="10"><div>节点id:</div></el-col>
+        <el-col :span="12"
+          ><div>{{ curnode.id }}</div></el-col
+        >
+      </el-row>
+      <el-row class="nodeinfo">
+        <el-col :span="10"><div>函数名称:</div></el-col>
+        <el-col :span="12"
+          ><div>{{ curnode.name }}</div></el-col
+        >
+      </el-row>
+      <el-row class="nodeinfo">
+        <el-col :span="10"><div>模块名称:</div></el-col>
+        <el-col :span="12"
+          ><div>{{ curnode.module }}</div></el-col
+        >
+      </el-row>
+      <el-row class="nodeinfo">
+        <el-col :span="10"><div>开始行号:</div></el-col>
+        <el-col :span="12"
+          ><div>{{ curnode.start }}</div></el-col
+        >
+      </el-row>
+      <el-row class="nodeinfo">
+        <el-col :span="10"><div>结束行号:</div></el-col>
+        <el-col :span="12"
+          ><div>{{ curnode.end }}</div></el-col
+        >
+      </el-row>
+      <el-row class="nodeinfo">
+        <el-col :span="10"><div>源文件:</div></el-col>
+        <el-col :span="12"
+          ><div>{{ curnode.ori }}</div></el-col
+        >
+      </el-row>
     </el-aside>
-    <el-main>
-      <el-row style="margin-bottom: 20px">
+    <el-main style="padding-top: 0px">
+      <el-row
+        style="
+          margin-bottom: 0px;
+          background: black;
+          width: 1000px;
+          padding-top: 5px;
+          padding-left: 5px;
+        "
+      >
         <el-breadcrumb separator="/">
           <el-breadcrumb-item
             v-for="item in breadList"
             @click="openDetails(item)"
           >
-            {{ item.name }}</el-breadcrumb-item
-          >
+            <el-tag type="info" effect="dark" style="cursor: pointer">{{
+              item.name
+            }}</el-tag>
+          </el-breadcrumb-item>
         </el-breadcrumb>
       </el-row>
       <div ref="graph" id="graph">123</div>
@@ -48,6 +98,15 @@ import {
 export default {
   data() {
     return {
+      curnode: {
+        id: "",
+        name: "",
+        module: "",
+        start: "",
+        end: "",
+        ori: "",
+      },
+      value1: true,
       restaurants: [],
       state: "",
       timeout: null,
@@ -62,7 +121,27 @@ export default {
       },
     };
   },
+  watch: {
+    value1: {
+      handler(newName, oldName) {
+        if (newName) {
+          this.Graph.nodeThreeObject((node) => {
+            const sprite = new SpriteText(node.name);
+            // sprite.material.depthWrite = false; // make sprite background transparent
+            sprite.color = "white";
+            sprite.textHeight = 8;
+            sprite.position.y = -10;
+            return sprite;
+          }).refresh();
+        } else {
+          this.Graph.nodeThreeObject((node) => {}).refresh();
+        }
+      },
+    },
+  },
   methods: {
+    changeTag() {},
+
     querySearchAsync(queryString, cb) {
       console.log(queryString);
       querySinpleFuctions(this.snapshot, "")
@@ -89,7 +168,14 @@ export default {
       };
     },
     handleSelect(item) {
+      console.log("-------------------");
       console.log(item);
+      this.curnode.id = item.id;
+      this.curnode.name = item.name;
+      this.curnode.module = item.moduleName;
+      this.curnode.start = item.lineBegin;
+      this.curnode.end = item.lineEnd;
+      this.curnode.ori = item.szOrg;
       queryBlksByModuleNameAndFunction(
         this.snapshot,
         item.moduleName,
@@ -228,5 +314,9 @@ export default {
 <style>
 .el-autocomplete-suggestion {
   width: auto !important;
+}
+
+.nodeinfo {
+  font-size:50%
 }
 </style>

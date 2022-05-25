@@ -41,7 +41,7 @@
       </el-col>
       <el-col :span="12">
         <el-card shadow="hover">
-          <div id="main">版本对比信息</div>
+          <div id="main" style="height:300px;width:300px">版本对比信息</div>
         </el-card>
       </el-col>
     </el-row>
@@ -61,6 +61,8 @@ export default {
     console.log("mounted");
     var chartDom = document.getElementById("main");
     var myChart = echarts.init(chartDom);
+
+    console.log("mounted2");
 
     myChart.setOption({
       title: { text: "在Vue中使用echarts" },
