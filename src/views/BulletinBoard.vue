@@ -1,277 +1,352 @@
 <template>
   <div>
     <el-row :gutter="20">
-      <el-col :span="24">
+      <el-col :span="10">
         <el-card shadow="hover">
-          <el-steps :active="4" align-center>
-            <el-step title="版本1" description="描述信息"></el-step>
-            <el-step title="版本2" description="描述信息"></el-step>
-            <el-step title="版本3" description="描述信息"></el-step>
-            <el-step title="版本4" description="描述信息"></el-step>
-          </el-steps>
+          <el-descriptions title="总体覆盖率" column="3" direction="vertical">
+            <el-descriptions-item label="函数覆盖率"
+              ><div style="height: 150px">
+                <el-progress
+                  color="#f1c40f"
+                  type="circle"
+                  stroke-width="15"
+                  :percentage="setItemProgress(overallCoverage.function)"
+                  :format="format(overallCoverage.function)"
+                ></el-progress></div
+            ></el-descriptions-item>
+
+            <el-descriptions-item label="代码行覆盖率"
+              ><div style="height: 150px">
+                <el-progress
+                  color="#1abc9c"
+                  type="circle"
+                  stroke-width="15"
+                  :percentage="setItemProgress(overallCoverage.row)"
+                  :format="format(overallCoverage.row)"
+                ></el-progress></div
+            ></el-descriptions-item>
+
+            <el-descriptions-item label="条件覆盖率"
+              ><div style="height: 150px">
+                <el-progress
+                  color="#3498db"
+                  type="circle"
+                  stroke-width="15"
+                  :percentage="setItemProgress(overallCoverage.condition)"
+                  :format="format(overallCoverage.condition)"
+                ></el-progress></div
+            ></el-descriptions-item>
+          </el-descriptions>
         </el-card>
       </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="12">
+
+      <el-col :span="14">
         <el-card shadow="hover">
-          <schart
-            ref="bar"
-            class="schart"
-            canvasId="bar"
-            :options="options"
-          ></schart>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card shadow="hover">
-          <schart
-            ref="line"
-            class="schart"
-            canvasId="line"
-            :options="options2"
-          ></schart>
+          <el-descriptions title="各模块覆盖率" column="1">
+            <el-descriptions-item>
+              <el-row :gutter="20">
+                <el-col :span="4"> </el-col>
+                <el-col :span="5"> 函数 </el-col>
+                <el-col :span="5"> 代码行 </el-col>
+                <el-col :span="5"> 条件 </el-col>
+              </el-row>
+              <div
+                style="overflow-y: scroll; overflow-x: hidden; height: 120px"
+              >
+                <el-row :gutter="20" v-for="item in moduleData">
+                  <el-col :span="4"> {{ item[0] }} </el-col>
+                  <el-col :span="5">
+                    <el-progress
+                      color="#f1c40f"
+                      :text-inside="true"
+                      :stroke-width="20"
+                      :percentage="setItemProgress(item[1])"
+                      :format="format(item[1])"
+                    ></el-progress>
+                  </el-col>
+                  <el-col :span="5">
+                    <el-progress
+                      color="#1abc9c"
+                      :text-inside="true"
+                      :stroke-width="20"
+                      :percentage="setItemProgress(item[2])"
+                      :format="format(item[2])"
+                    ></el-progress>
+                  </el-col>
+                  <el-col :span="5">
+                    <el-progress
+                      color="#3498db"
+                      :text-inside="true"
+                      :stroke-width="20"
+                      :percentage="setItemProgress(item[3])"
+                      :format="format(item[3])"
+                    ></el-progress>
+                  </el-col>
+                </el-row></div
+            ></el-descriptions-item>
+          </el-descriptions>
         </el-card>
       </el-col>
     </el-row>
 
     <el-row :gutter="20">
-      <el-col :span="12">
-        <el-card shadow="hover"> 用例信息 </el-card>
-      </el-col>
-      <el-col :span="12">
+      <el-col :span="8">
         <el-card shadow="hover">
-          <div id="main" style="height:300px;width:300px">版本对比信息</div>
+          <div style="height: 195px">
+            <el-descriptions title="代码量信息" column="1">
+              <el-descriptions-item label="代码行数:"
+                >{{code.lineNum}}行</el-descriptions-item
+              >
+              <el-descriptions-item label="代码重复率:"
+                >{{code.repetitionRate}}%</el-descriptions-item
+              >
+            </el-descriptions>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card shadow="hover">
+          <el-descriptions title="寄存器覆盖率" column="1">
+            <el-descriptions-item
+              ><div style="height: 120px">
+                <el-progress
+                  color="#9b59b6"
+                  type="circle"
+                  stroke-width="15"
+                  :percentage="setItemProgress(registerCoverage)"
+                  :format="format(registerCoverage)"
+                ></el-progress></div
+            ></el-descriptions-item>
+          </el-descriptions>
+        </el-card>
+      </el-col>
+
+      <el-col :span="10">
+        <el-card shadow="hover">
+          <el-descriptions title="关键资产信息" column="1">
+            <el-descriptions-item>
+              <div style="height: 120px">
+                <el-row :gutter="20">
+                  <el-col :span="5">总体覆盖率</el-col>
+                  <el-col :span="15">
+                    <el-progress
+                      color="#006266"
+                      :text-inside="true"
+                      :stroke-width="20"
+                      :percentage="
+                        setItemProgress(keyAssetsCoverage.population)
+                      "
+                      :format="format(keyAssetsCoverage.population)"
+                    ></el-progress>
+                  </el-col>
+                </el-row>
+
+                <el-row :gutter="20">
+                  <el-col :span="5">路径覆盖率</el-col>
+                  <el-col :span="15">
+                    <el-progress
+                      color="#9980FA"
+                      :text-inside="true"
+                      :stroke-width="20"
+                      :percentage="setItemProgress(keyAssetsCoverage.route)"
+                      :format="format(keyAssetsCoverage.route)"
+                    ></el-progress>
+                  </el-col>
+                </el-row></div
+            ></el-descriptions-item>
+          </el-descriptions>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20">
+      <el-col :span="24">
+        <el-card shadow="hover">
+          <el-table :data="tableData" style="width: 100%">
+            <el-table-column prop="id" label="用例编号"> </el-table-column>
+            <el-table-column prop="name" label="用例名"> </el-table-column>
+            <el-table-column prop="platform" label="用例平台">
+            </el-table-column>
+            <el-table-column prop="explain" label="用例说明"> </el-table-column>
+          </el-table>
+
+          <div class="pagination">
+            <el-pagination
+              background
+              layout="total, prev, pager, next"
+              :current-page="query.pageIndex"
+              :page-size="query.pageSize"
+              :total="pageTotal"
+              @current-change="handlePageChange"
+            ></el-pagination>
+          </div>
         </el-card>
       </el-col>
     </el-row>
   </div>
 </template>
 
-<script>
+<script setup>
 import Schart from "vue-schart";
-import { reactive } from "vue";
-
 import * as echarts from "echarts";
 
-export default {
-  name: "dashboard",
-  components: { Schart },
-  mounted() {
-    console.log("mounted");
-    var chartDom = document.getElementById("main");
-    var myChart = echarts.init(chartDom);
+import { ref, reactive, onMounted } from "vue";
 
-    console.log("mounted2");
+import {
+  caseData,
+  keyAssetsCoverageData,
+  moduleCoverageData,
+  registerCoverageData,
+  codeData
+} from "../api/index";
 
-    myChart.setOption({
-      title: { text: "在Vue中使用echarts" },
-      tooltip: {},
-      xAxis: {
-        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-      },
-      yAxis: {},
-      series: [
-        {
-          name: "销量",
-          type: "bar",
-          data: [5, 20, 36, 10, 10, 20],
-        },
-      ],
-    });
-  },
-  setup() {
-    const name = localStorage.getItem("ms_username");
-    const role = name === "admin" ? "超级管理员" : "普通用户";
+const pageTotal = ref(0);
 
-    const options = {
-      type: "bar",
-      title: {
-        text: "覆盖率信息",
-      },
-      xRorate: 25,
-      labels: ["版本1", "版本2", "版本3", "版本4", "版本5"],
-      datasets: [
-        {
-          label: "模块1",
-          data: [30, 20, 50, 10, 20],
-        },
-        {
-          label: "模块2",
-          data: [20, 30, 20, 40, 50],
-        },
-        {
-          label: "模块3",
-          data: [10, 30, 20, 20, 10],
-        },
-      ],
-    };
-    const options2 = {
-      type: "line",
-      title: {
-        text: "版本覆盖率变化曲线",
-      },
-      labels: ["一周", "两周", "三周", "四周", "五周"],
-      datasets: [
-        {
-          label: "版本1",
-          data: [50, 60, 70, 60, 80],
-        },
-        {
-          label: "版本2",
-          data: [30, 70, 50, 30, 70],
-        },
-        {
-          label: "版本3",
-          data: [90, 50, 60, 50, 90],
-        },
-      ],
-    };
-    const todoList = reactive([
-      {
-        title: "今天要修复100个bug",
-        status: false,
-      },
-      {
-        title: "今天要修复100个bug",
-        status: false,
-      },
-      {
-        title: "今天要写100行代码加几个bug吧",
-        status: false,
-      },
-      {
-        title: "今天要修复100个bug",
-        status: false,
-      },
-      {
-        title: "今天要修复100个bug",
-        status: true,
-      },
-      {
-        title: "今天要写100行代码加几个bug吧",
-        status: true,
-      },
-    ]);
+const query = reactive({
+  id: "",
+  name: "",
+  platform: "",
+  explain: "",
+  pageIndex: 1,
+  pageSize: 5,
+});
 
-    return {
-      name,
-      options,
-      options2,
-      todoList,
-      role,
-    };
-  },
+const code = ref({
+  lineNum:"",
+  repetitionRate:"",
+});
+
+const getcodeData = () => {
+  // 获取关键资产覆盖率
+  codeData().then((res) => {
+    code.value = res;
+  });
 };
+getcodeData()
+
+const registerCoverage = ref([1, 1]); // 寄存器覆盖率
+
+const getregisterCoverageData = () => {
+  // 获取关键资产覆盖率
+  registerCoverageData().then((res) => {
+    registerCoverage.value = res;
+  });
+};
+getregisterCoverageData()
+
+const overallCoverage = ref({
+  function: [1, 1],
+  row: [1, 1],
+  condition: [1, 1],
+}); // 总体覆盖率
+
+const moduleData = ref(); // 模块覆盖率
+
+const getmoduleCoverageData = () => {
+  // 获取关键资产覆盖率
+  moduleCoverageData().then((res) => {
+    moduleData.value = res;
+    overallCoverage.value = {
+      function: [0, 0],
+      row: [0, 0],
+      condition: [0, 0],
+    };
+    res.forEach((item, index, arr) => {
+      console.log(index + ":" + item);
+      overallCoverage.value.function[0] += item[1][0]
+      overallCoverage.value.function[1] += item[1][1]
+
+      overallCoverage.value.row[0] += item[2][0]
+      overallCoverage.value.row[1] += item[2][1]
+
+      overallCoverage.value.condition[0] += item[3][0]
+      overallCoverage.value.condition[1] += item[3][1]
+    });
+  });
+};
+getmoduleCoverageData();
+
+const keyAssetsCoverage = ref({
+  population: [1, 1],
+  route: [1, 1],
+}); // 关键资产覆盖率
+
+const getkeyAssetsCoverageData = () => {
+  // 获取关键资产覆盖率
+  keyAssetsCoverageData().then((res) => {
+    keyAssetsCoverage.value = res;
+  });
+};
+getkeyAssetsCoverageData();
+
+const tableData = ref(); // 用例信息
+
+const getTableData = () => {
+  // 获取用例信息
+  caseData(query).then((res) => {
+    tableData.value = res.list;
+    pageTotal.value = res.pageTotal || 10;
+  });
+};
+getTableData();
+
+const handlePageChange = (val) => {
+  query.pageIndex = val;
+  getTableData();
+};
+
+function setItemProgress(data) {
+  return (data[0] / data[1]).toFixed(4) * 100;
+}
+
+function format(data) {
+  let num = data[0] / data[1];
+  num = Math.round(num * 10000) / 100;
+  return () => {
+    return `${num}%` + "\n(" + data[0] + "/" + data[1] + ")";
+  };
+}
 </script>
 
-<style scoped>
+
+<style>
+.el-progress__text {
+  white-space: pre;
+}
+
+.el-progress-bar__outer {
+  background-color: #a7a7a7;
+}
+
+.mode-name {
+  width: 100px;
+}
+
+.mode-percentage {
+  width: 500px;
+}
+
 .el-row {
   margin-bottom: 20px;
 }
-
+.el-col {
+  border-radius: 4px;
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.bg-purple {
+  background: #d3dce6;
+}
+.bg-purple-light {
+  background: #e5e9f2;
+}
 .grid-content {
-  display: flex;
-  align-items: center;
-  height: 100px;
+  border-radius: 4px;
+  min-height: 36px;
 }
-
-.grid-cont-right {
-  flex: 1;
-  text-align: center;
-  font-size: 14px;
-  color: #999;
-}
-
-.grid-num {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.grid-con-icon {
-  font-size: 50px;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  color: #fff;
-}
-
-.grid-con-1 .grid-con-icon {
-  background: rgb(45, 140, 240);
-}
-
-.grid-con-1 .grid-num {
-  color: rgb(45, 140, 240);
-}
-
-.grid-con-2 .grid-con-icon {
-  background: rgb(100, 213, 114);
-}
-
-.grid-con-2 .grid-num {
-  color: rgb(45, 140, 240);
-}
-
-.grid-con-3 .grid-con-icon {
-  background: rgb(242, 94, 67);
-}
-
-.grid-con-3 .grid-num {
-  color: rgb(242, 94, 67);
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 20px;
-}
-
-.user-avator {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-.user-info-cont {
-  padding-left: 50px;
-  flex: 1;
-  font-size: 14px;
-  color: #999;
-}
-
-.user-info-cont div:first-child {
-  font-size: 30px;
-  color: #222;
-}
-
-.user-info-list {
-  font-size: 14px;
-  color: #999;
-  line-height: 25px;
-}
-
-.user-info-list span {
-  margin-left: 70px;
-}
-
-.mgb20 {
-  margin-bottom: 20px;
-}
-
-.todo-item {
-  font-size: 14px;
-}
-
-.todo-item-del {
-  text-decoration: line-through;
-  color: #999;
-}
-
-.schart {
-  width: 100%;
-  height: 300px;
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
 }
 </style>

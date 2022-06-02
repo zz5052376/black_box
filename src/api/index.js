@@ -81,3 +81,40 @@ export const graphData2 = query => {
         params: ''
     });
 };
+
+
+export const caseData = query => {
+    return request({
+        url: './caseData.json',
+        method: 'get',
+        params: query
+    });
+};
+
+export const keyAssetsCoverageData = query => {
+    return request({
+        url: './keyAssetsCoverageData.json',
+        method: 'get'
+    });
+};
+
+export const moduleCoverageData = query => {
+    return request({
+        url: './moduleCoverageData.json',
+        method: 'get'
+    });
+};
+
+export const registerCoverageData = query => {
+    return request({
+        url: './registerCoverageData.json',
+        method: 'get'
+    });
+};
+export const codeData = query => {
+    return request({
+        url: './codeData.json',
+        method: 'get'
+    });
+};
+

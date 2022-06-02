@@ -87,7 +87,7 @@ const routes = [
                 path: "/bulletin",
                 name: "bulletin",
                 meta: {
-                    title: '整体网络图'
+                    title: '看板'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/BulletinBoard.vue")
             },
@@ -95,7 +95,7 @@ const routes = [
                 path: "/network",
                 name: "network",
                 meta: {
-                    title: '看板'
+                    title: '整体网络图'
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/NetworkPage.vue")
             },

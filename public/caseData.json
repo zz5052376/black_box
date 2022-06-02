@@ -1,0 +1,30 @@
+{
+
+    "list":[
+        {
+          "id": "1",
+          "name": "用例1",
+          "platform": "平台名",
+          "explain": "说明1"
+        },
+        {
+          "id": "2",
+          "name": "用例2",
+          "platform": "平台名",
+          "explain": "说明2"
+        },
+        {
+          "id": "3",
+          "name": "用例3",
+          "platform": "平台名",
+          "explain": "说明3"
+        },
+        {
+          "id": "4",
+          "name": "用例4",
+          "platform": "平台名",
+          "explain": "说明4"
+        }
+      ],
+    "pageTotal": 4
+}

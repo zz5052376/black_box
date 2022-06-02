@@ -10,7 +10,17 @@
     <div class="select">
       <el-select v-model="value" placeholder="请选择" @change="changePlatform">
         <el-option
-          v-for="item in options"
+          v-for="item in platforms"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+
+      <el-select v-model="value" placeholder="请选择" style="margin-left:10px">
+        <el-option
+          v-for="item in versions"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -18,6 +28,18 @@
         </el-option>
       </el-select>
     </div>
+
+    <!-- <div class="select">
+      <el-select v-model="value" placeholder="请选择">
+        <el-option
+          v-for="item in versions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+    </div> -->
 
     <div class="header-right">
       <div class="header-user-con">
@@ -68,7 +90,7 @@ export default {
     };
   },
   setup() {
-    const options = [
+    const platforms = [
       {
         value: "1",
         label: "平台1",
@@ -81,13 +103,20 @@ export default {
         value: "3",
         label: "平台3",
       },
+    ];
+
+    const versions = [
       {
-        value: "4",
-        label: "平台4",
+        value: "1",
+        label: "版本1",
       },
       {
-        value: "5",
-        label: "平台5",
+        value: "2",
+        label: "版本2",
+      },
+      {
+        value: "3",
+        label: "版本3",
       },
     ];
 
@@ -128,7 +157,8 @@ export default {
       collapse,
       collapseChage,
       handleCommand,
-      options,
+      platforms,
+      versions,
       changePlatform,
     };
   },
